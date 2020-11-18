@@ -1,0 +1,70 @@
+float temp;
+int tempPin = A1;
+float low = 5.0;
+
+float high=40.0;
+
+void setup()
+
+{
+pinMode(13, OUTPUT);
+pinMode(12, OUTPUT);
+Serial.begin(9600);
+
+low = low/0.48828125;
+high = high/0.48828125;
+
+}
+
+
+void loop()
+
+{
+
+
+temp = analogRead(tempPin);
+// l=5 10   h=
+ 
+if(temp<int(low) || temp>int(high)){
+  digitalWrite(12, LOW);
+  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+  
+
+  Serial.print("TEMPRATURE : ");
+
+  Serial.print(temp);
+  Serial.print("  Low : ");
+  Serial.print(low);
+  Serial.print("  High : ");
+  Serial.print(high);
+  //Serial.print(" Degree Celsius");
+  Serial.println();
+  
+  delay(500); 
+}
+else{
+  digitalWrite(13, LOW);
+  digitalWrite(12, HIGH);   // turn the LED on (HIGH is the voltage level)
+  
+
+  Serial.print("TEMPRATURE : ");
+
+  Serial.print(temp);
+  Serial.print("  Low : ");
+  Serial.print(low);
+  Serial.print("  High : ");
+  Serial.print(high);
+  //Serial.print(" Degree Celsius");
+  Serial.println();
+  
+  
+  delay(500); 
+
+}
+//temp = temp * 0.48828125;
+
+
+
+
+
+}
